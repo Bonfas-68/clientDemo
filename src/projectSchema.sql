@@ -16,19 +16,16 @@
     );
 --Query OK, 0 rows affected (0.89 sec)
     insert into users (
-        user_id,
         username,
         user_domain,
         user_email,
         user_phone,
         user_location) VALUES
-    (1,'bonfas oluoch', 'technology', 'oluoch@gmail.com', '0797914242', 'kenya'),
-    (2,'Calos Menjor', 'Humanty', 'calorM@gmail.com', '0711213644', 'uganda');
+    ('bonfas oluoch', 'technology', 'oluoch@gmail.com', '0797914242', 'kenya'),
+    ('Calos Menjor', 'Humanty', 'calorM@gmail.com', '0711213644', 'uganda');
 
 --Read data
     SELECT * FROM users;
-
-
 --FOLLOW TABLE
     --------------------------
     CREATE TABLE follow(
@@ -64,10 +61,10 @@
     );
     insert into 
     ideas
-    (idea_id, user_id, idea_text)
+    ( user_id, idea_text)
     VALUES
-    (1,16,'Show love to all help as you can and get busy atleast for others at once!!!'),
-    (2,17,'The way to solve for any float challenge is by clear both');
+    (16,'Show love to all help as you can and get busy atleast for others at once!!!'),
+    (17,'The way to solve for any float challenge is by clear both');
 
     --Read data
     SELECT * FROM ideas;
@@ -85,10 +82,10 @@
     );
     --add data
     insert into 
-    comment(comment_id, comment, user_id, idea_id)
+    comment(comment, user_id, idea_id)
     VALUES
-    (1 ,'Cool man love that people show love',16 ,1),
-    (2 ,'Better to apply for clarity',17 ,2);
+    ('Cool man love that people show love',16 ,1),
+    ('Better to apply for clarity',17 ,2);
 
     --Read data
     SELECT * FROM comment;
@@ -107,10 +104,10 @@
     );
     --add data 
     insert into 
-    testimony(testimony_id, testimony, user_id, idea_id)
+    testimony( testimony, user_id, idea_id)
     VALUES
-    (1,'Best of all platform here i find best way to solve many problems in a simple way ' ,17 ,1),
-    (2,'Willing to show you ways out solve is the best of all compassion ever seen in this platform' ,16 ,1);
+    ('Best of all platform here i find best way to solve many problems in a simple way ' ,17 ,1),
+    ('Willing to show you ways out solve is the best of all compassion ever seen in this platform' ,16 ,1);
 
     --Read data
     SELECT * FROM testimony;
@@ -125,10 +122,10 @@
     ); 
     --add data
     insert into 
-    domain(domain_id, domain_name)
+    domain( domain_name)
     VALUES
-    (1, 'Technology'),
-    (2, 'Humanity');
+    ('Technology'),
+    ('Humanity');
 
     --Read data
     SELECT * FROM domain;
@@ -249,3 +246,35 @@
     --Read data
     SELECT * FROM adverts
     --Query OK, 0 rows affected (0.96 sec)
+    CORRECTiON iDEAS TABLE
+    ------------------------
+    CREATE TABLE messages(
+        msg_id int IDENTITY(1,1) Primary key,
+        idea_id int,
+        receiver_id int,
+        sender_id int,
+        msg_content varchar(1000),
+        msg_image VARCHAR(255),
+        msg_video VARCHAR(255),
+        msg_file VARCHAR(255),
+        created_at Date,
+        foreign key(idea_id) REFERENCES ideas(idea_id) on delete no action,
+        foreign key(receiver_id) REFERENCES users(user_id) on delete no action,
+        foreign key(sender_id) REFERENCES users(user_id) on delete no action
+    );
+    CREATE TABLE replies(
+        reply_id int IDENTITY(1,1) Primary key,
+        idea_id int,
+        receiver_id int,
+        sender_id int,
+        msg_id int,
+        reply_content varchar(1000),
+        reply_image VARCHAR(255),
+        reply_video VARCHAR(255),
+        reply_file VARCHAR(255),
+        created_at Date,
+        foreign key(idea_id) REFERENCES ideas(idea_id) on delete no action,
+        foreign key(receiver_id) REFERENCES users(user_id) on delete no action,
+        foreign key(sender_id) REFERENCES users(user_id) on delete no action,
+        foreign key(msg_id) REFERENCES messages(msg_id) on delete no action
+    );

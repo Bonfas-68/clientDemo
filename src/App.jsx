@@ -12,6 +12,8 @@ import ReadMore from "./homePages/ReadMore"
 import UpdateIdea from "./components/UpdateIdea"
 import Welcome from "./components/Welcome"
 import { Context } from "./context/userContext"
+import Profile from "./components/Profile"
+import UserPage from "./components/UserPage"
 
 
 
@@ -27,11 +29,13 @@ function App() {
   }, [])
   return (
     <BrowserRouter>
-    {user && <Welcome setToggleShow={setToggleShow}/>}
-    <div id="root_intro"><h1>A problem shared is problem halved!!! Share More @idzonea to help another </h1><span>{tyme.split(":")[0] >= 12 ? `${tyme} PM` :`${tyme} AM` }</span></div>
+    {user?.token ? <Welcome setToggleShow={setToggleShow}/>  :  null}
+    <div id="root_intro"><h1>A problem shared is problem halved!!! Share More @idzonea to help another </h1><span>{tyme.split(":")[0] >= 12 && tyme.split(":")[0] >=1 ? `${tyme} PM` :`${tyme} AM` }</span></div>
       <Sidebar setToggleLogin={setToggleLogin}/>
       <Routes>
         <Route path="/login" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/userpage" element={<UserPage />} />
         <Route path="/" element={<Register />}/>
         <Route path="/app" element={<IdeaLayout/>}>
           <Route path="/app/readmore" element={<ReadMore />} />

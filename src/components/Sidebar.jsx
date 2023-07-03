@@ -1,6 +1,7 @@
 import axios from "axios";
-import React, { useState } from "react";
-// import { Link } from "react-router-dom";
+import  {useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Context } from "../context/userContext";
 import {
   FaConfluence,
   FaHome,
@@ -16,7 +17,12 @@ import {
 import { Link, NavLink } from "react-router-dom";
 
 const Sidebar = ({setToggleLogin}) => {
-  
+  const navigate = useNavigate()
+  const {setUser} = useContext(Context)
+  const logout = ()=>{
+    setUser(null)
+    navigate("/login")
+  }
   return (
     <div className="b__sidebar">
       <div className="b__sidebar-button">
@@ -24,7 +30,7 @@ const Sidebar = ({setToggleLogin}) => {
           <AiOutlineHome className="btn-symbol" />
           <Link to="/" className="b__sidebar-button--text">
             Home
-            </Link>
+          </Link>
         </button>
       </div>
       <div className="b__sidebar-button">
@@ -51,7 +57,7 @@ const Sidebar = ({setToggleLogin}) => {
       <div className="b__sidebar-button">
         <button>
           <FaLongArrowAltUp className="btn-symbol" />
-          <Link to="/" className="b__sidebar-button--text">Logout</Link> 
+          <span onClick={()=> logout()} className="b__sidebar-button--text">Logout</span> 
           <Link to="/login"  className="b__sidebar-button--text" 
           onClick={()=> setToggleLogin(true)}
           >Login</Link>

@@ -55,6 +55,7 @@ const Idea = ({ idea }) => {
           </div>
           <div className="b__user-details">
             <h3>{idea?.username}</h3>
+            <span className="user__domain">{idea?.user_domain}</span>
           </div>
         </div>
         <div className="b__idea-a">

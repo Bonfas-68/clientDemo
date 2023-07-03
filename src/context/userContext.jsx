@@ -36,6 +36,6 @@ export const ContextProvider = ({ children }) => {
     setUser(u);
   };
   return (
-    <Context.Provider value={{ login, user, ideas, fetchAllIdeas }}>{children}</Context.Provider>
+    <Context.Provider value={{ login, user,setUser, ideas, setIdeas, fetchAllIdeas }}>{children}</Context.Provider>
   );
 };
