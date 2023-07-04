@@ -56,7 +56,7 @@ const Register = ({ setToggleLogin }) => {
   const spanStyles = {
         color: "#111",
     padding: "1rem 0",
-    backgroundBcolor: "yellow",
+    backgroundColor: "yellow",
     textAlign: "justify",
     fontSize: "13px",
     lineHeight: "28px"
