@@ -54,12 +54,12 @@ const Register = ({ setToggleLogin }) => {
     navigate("/login");
   };
   const spanStyles = {
-        color: "#111";
-    padding: "1rem 0";
-    backgroundBcolor: "yellow";
-    textAlign: "justify";
-    fontSize: "13px";
-    lineHeight: "28px";
+        color: "#111",
+    padding: "1rem 0",
+    backgroundBcolor: "yellow",
+    textAlign: "justify",
+    fontSize: "13px",
+    lineHeight: "28px"
   }
 
   return (
