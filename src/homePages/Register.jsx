@@ -54,7 +54,7 @@ const Register = ({ setToggleLogin }) => {
     navigate("/login");
   };
   const spanStyles = {
-        color: #111;
+        color: "#111";
     padding: "1rem 0";
     backgroundBcolor: "yellow";
     textAlign: "justify";
