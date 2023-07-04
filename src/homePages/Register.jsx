@@ -57,7 +57,7 @@ const Register = ({ setToggleLogin }) => {
   return (
     <div className="b__reg">
     <form className="b__home-form register" onSubmit={handleSubmit(onSubmit)} >
-      <span  style={{color:"whitesmoke",fontSize:"20px",width:"100%", margin:"1rem 0"}}>Must Upload a photo in order to register. Please to so to enjoy the most out of this web app</span>
+      <span  style={{color:"whitesmoke",fontSize:"20px",width:"75%", margin:".7rem auto"}}>Must Upload a profile image in order to register. Please do so by clicking at the <b>Upload Profile image</b> below to enjoy the most out of this web app</span>
       <div className="b__home-form--control">
         <label htmlFor="profile">Upload Profile Image</label>
         <input
